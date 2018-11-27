@@ -1,0 +1,52 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "radio ireland",
+      "intents": [
+        {
+          "name": "PlayStreamIntent",
+          "slots": [],
+          "samples": [
+            "to play",
+            "to start playing",
+            "to start"
+          ]
+        },
+        {
+          "name": "AboutIntent",
+          "slots": [],
+          "samples": [
+            "about",
+            "what is this",
+            "tell me about this"
+          ]
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "help me",
+            "how does this work",
+            "what should i do"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}
