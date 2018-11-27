@@ -10,6 +10,8 @@ const STREAMS = [
   {
     "token": "stream-12",
     "url": 'https://sgrewind.streamguys1.com/rte/radio1/playlist_dvr_range-1542870005-60.m3u8',
+    "smallImage":"https://s3-eu-west-1.amazonaws.com/rte-alexa-images/small.jpg",
+    "largeImage": "https://s3-eu-west-1.amazonaws.com/rte-alexa-images/lg.jpg", 
     "metadata" : {
       "title": "Radio One",
       "subtitle": "A subtitle for stream one",
@@ -58,8 +60,9 @@ const PlayStreamIntentHandler = {
     handlerInput.responseBuilder
       .speak(`${showName} on ${channel}`)
       //addAudioPlayerPlayDirective(playBehavior: interfaces.audioplayer.PlayBehavior, url: string, token: string, offsetInMilliseconds: number, expectedPreviousToken?: string, audioItemMetadata? : AudioItemMetadata): 
-      .addAudioPlayerPlayDirective('REPLACE_ALL', streamUrl, stream.token, 0, stream.token, stream.metadata)
-      .withSimpleCard('RTE', "Yo!");
+      //.withSimpleCard('RTE', "Yo!");
+      .withStandardCard(stream.metadata.title, stream.metadata.subtitle, stream.smallImage, stream.largeImage)
+      .addAudioPlayerPlayDirective('REPLACE_ALL', streamUrl, stream.token, 0, null, stream.metadata);
     return handlerInput.responseBuilder
       .getResponse();
   },
