@@ -253,6 +253,19 @@ const ExceptionEncounteredRequestHandler = {
   },
 };
 
+const CheckAudioInterfaceHandler = {
+  async canHandle(handlerInput) {
+    const audioPlayerInterface = ((((handlerInput.requestEnvelope.context || {}).System || {}).device || {}).supportedInterfaces || {}).AudioPlayer;
+    return audioPlayerInterface === undefined
+  },
+  handle(handlerInput) {
+    return handlerInput.responseBuilder
+      .speak('Sorry, this skill is not supported on this device')
+      .withShouldEndSession(true)
+      .getResponse();
+  },
+};
+
 const ErrorHandler = {
   canHandle() {
     return true;
@@ -271,6 +284,7 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 
 exports.handler = skillBuilder
   .addRequestHandlers(
+    CheckAudioInterfaceHandler,
     PlayStreamIntentHandler,
     playFromStart,
     getLatest,
